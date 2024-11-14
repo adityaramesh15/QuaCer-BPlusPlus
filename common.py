@@ -172,11 +172,12 @@ def get_agreement_separate(texts):
     return responses
 
 
+
 def get_crossover_mutation_jb(tokenizer, possible_tokens=None, crossover_prob = 0.2, mutation_prob = 0.01, race=False):
-    main_jb1 = jbs.main_jb 
-    if race == True:
-        main_jb1 = jbs.main_jb_race
-    side_jb_insts1 = jbs.side_jb_insts
+    main_jb1 = jbs.main_jb_gender_race 
+    # if race == True:
+    #     main_jb1 = jbs.main_jb_race
+    side_jb_insts1 = jbs.side_jb_insts_race_gender
     main_jbs = main_jb1.split('. ')
     main_jbs = [m.strip() for m in main_jbs]
     main_jbs = [(m+'.') for m in main_jbs if len(m) > 0]
