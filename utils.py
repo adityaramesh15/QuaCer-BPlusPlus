@@ -50,11 +50,12 @@ def update_prompt(prompt, tokenizer, model_name = 'vicuna'):
         prom = [
                {"role": "user", "content": prompt},
             ]
-        # try:
-        return tokenizer.apply_chat_template(prom, add_generation_prompt=True,tokenize=False)
-        # except:
-        #     llama_tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-2-7b-chat-hf')
-        #     return llama_tokenizer.apply_chat_template(prom, add_generation_prompt=True,tokenize=False)
+        try:
+            return tokenizer.apply_chat_template(prom, add_generation_prompt=True,tokenize=False)
+        except:
+            llama_tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-2-7b-chat-hf')
+            # llama_tokenizer = AutoTokenizer.from_pretrained('meta-llama/Llama-3.2-1B-Instruct')
+            return llama_tokenizer.apply_chat_template(prom, add_generation_prompt=True,tokenize=False)
     else:
         raise ValueError('Model not implemented!')
     
